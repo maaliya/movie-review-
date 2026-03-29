@@ -8,9 +8,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public final class DatabaseUtil {
-    private static final String URL = "jdbc:mysql://localhost:3306/moviereviews";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "Jdbc@mysql";
+    private static final String URL = buildJdbcUrl();
+    private static final String USERNAME = getEnvOrDefault("DB_USER", "root");
+    private static final String PASSWORD = getEnvOrDefault("DB_PASSWORD", "Jdbc@mysql");
 
     static {
         try {
@@ -21,6 +21,19 @@ public final class DatabaseUtil {
     }
 
     private DatabaseUtil() {
+    }
+
+    private static String buildJdbcUrl() {
+        String host = getEnvOrDefault("DB_HOST", "localhost");
+        String port = getEnvOrDefault("DB_PORT", "3306");
+        String database = getEnvOrDefault("DB_NAME", "moviereviews");
+
+        return "jdbc:mysql://" + host + ":" + port + "/" + database;
+    }
+
+    private static String getEnvOrDefault(String key, String fallback) {
+        String value = System.getenv(key);
+        return value == null || value.isBlank() ? fallback : value;
     }
 
     public static Connection getConnection() throws SQLException {
