@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Review</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f0e8;
+            color: #2d1f14;
+        }
+
+        .wrap {
+            max-width: 720px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 28px;
+            border-radius: 14px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin: 14px 0 6px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d8cfc4;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        button, a {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 11px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        button {
+            border: 0;
+            background: #8b1e3f;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        a {
+            background: #ece3d8;
+            color: #2d1f14;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <h1>Add a Movie Review</h1>
+        <form action="add-review" method="post">
+            <label for="movieName">Movie Name</label>
+            <input id="movieName" name="movieName" type="text" required>
+
+            <label for="rating">Rating</label>
+            <input id="rating" name="rating" type="number" min="0" max="10" step="0.1" required>
+
+            <label for="reviewText">Review Text</label>
+            <textarea id="reviewText" name="reviewText" required></textarea>
+
+            <button type="submit">Save Review</button>
+            <a href="reviews">View Reviews</a>
+        </form>
+    </div>
+</body>
+</html>
